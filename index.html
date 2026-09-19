@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Berraquera — Tu mentor de voz por IA</title>
+<meta name="description" content="El mentor que le faltaba a tu negocio, en tu bolsillo. Berraquera es un mentor de voz por IA para emprendedores y microempresarios en Colombia.">
+
+<!--
+  ============================================================
+  ANTES DE PUBLICAR, reemplaza estos 4 valores:
+  1) CONFIG.googleFormUrl  -> el link de tu Google Form
+  2) CONFIG.facebookUrl    -> tu página de Facebook
+  3) CONFIG.instagramUrl   -> tu cuenta de Instagram
+  4) CONFIG.contactEmail   -> tu correo de contacto
+  Y en el <head>: META_PIXEL_ID_AQUI -> tu ID del Pixel de Meta.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+
+<!-- Meta Pixel (reemplaza META_PIXEL_ID_AQUI por tu ID real) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'META_PIXEL_ID_AQUI');
+fbq('track', 'PageView');
+</script>
+
+<style>
+  :root{
+    color-scheme: dark;
+    --navy:#0D0906;
+    --brown:#3A1604;
+    --white:#FFF6EC;
+    --silver:#E8CBAA;
+    --silver2:#C99B6E;
+    --silver3:#8B6A4E;
+    --muted:#9C8570;
+    --gradient-silver: linear-gradient(150deg, #FFE3BC 0%, #FFB86B 30%, #F2914B 62%, #C96A2E 100%);
+    --gradient-gold: var(--gradient-silver);
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--navy);
+    color:var(--white);
+    font-family:"Inter","Arial",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+  }
+  body::before{
+    content:"";
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:
+      radial-gradient(70% 55% at 85% 95%, rgba(242,145,75,0.22) 0%, transparent 62%),
+      radial-gradient(55% 45% at 10% 5%, rgba(255,220,168,0.05) 0%, transparent 60%),
+      var(--navy);
+  }
+  body::after{
+    content:"";
+    position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+  img{max-width:100%;}
+  [hidden]{display:none!important;}
+
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding-inline:24px;
+  }
+
+  h1,h2{
+    font-family:"Space Grotesk","Arial",sans-serif;
+    color:var(--white);
+    margin:0;
+  }
+
+  .rule-short{
+    width:72px; height:3px; border-radius:2px;
+    background:var(--gradient-silver);
+  }
+
+  .brandmark{
+    display:flex; align-items:center; gap:14px;
+  }
+  .brandmark .icon{
+    width:56px; height:56px; flex:0 0 auto;
+    border-radius:14px;
+    background:var(--gradient-silver);
+    box-shadow:
+      0 0 0 2px rgba(245,166,35,0.55),
+      0 0 18px rgba(245,166,35,0.25),
+      0 10px 20px rgba(0,0,0,0.45),
+      inset 0 2px 0 rgba(255,255,255,0.5),
+      inset 0 -10px 14px rgba(0,0,0,0.16);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  .brandmark .icon::before{
+    content:""; position:absolute; top:-40%; left:-40%; width:160%; height:160%;
+    background:radial-gradient(closest-side, rgba(255,210,140,0.6) 0%, rgba(255,255,255,0) 62%);
+    transform:translate(-16%,-20%);
+  }
+  .brandmark .icon span{
+    position:relative;
+    font-family:"Space Grotesk","Arial",sans-serif;
+    font-weight:800; font-size:28px; color:var(--brown);
+    transform:translate(1px,-1px);
+  }
+  .brandmark .word{
+    font-family:"Space Grotesk","Arial",sans-serif;
+    font-weight:700; font-size:20px; letter-spacing:2px; color:var(--white);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100dvh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    padding-block:96px 64px;
+    padding-inline:24px;
+    overflow:hidden;
+  }
+  .hero .ghost-b{
+    position:absolute; left:50%; top:-18%;
+    transform:translateX(-50%);
+    font-family:"Space Grotesk","Arial",sans-serif; font-weight:800;
+    font-size:min(70vw, 900px); line-height:1;
+    color:rgba(242,145,75,0.05);
+    user-select:none; pointer-events:none;
+  }
+  .hero .shine{
+    position:absolute; inset:-150px;
+    background:linear-gradient(115deg, transparent 34%, rgba(255,255,255,0.035) 50%, transparent 66%);
+    pointer-events:none;
+  }
+  .hero-inner{ position:relative; max-width:760px; }
+  .hero h1{
+    margin-top:32px;
+    font-size:clamp(2.1rem, 4.4vw + 1rem, 3.6rem);
+    letter-spacing:-1px;
+    line-height:1.15;
+  }
+  .hero p.sub{
+    margin:24px auto 0;
+    max-width:520px;
+    font-size:19px;
+    line-height:1.5;
+    color:var(--silver);
+  }
+  .cta{
+    position:relative;
+    display:inline-flex; align-items:center; justify-content:center;
+    margin-top:36px;
+    padding:16px 34px;
+    border-radius:999px;
+    background:var(--gradient-gold);
+    color:var(--navy);
+    font-family:"Space Grotesk","Arial",sans-serif;
+    font-weight:700; font-size:17px;
+    text-decoration:none;
+    white-space:nowrap;
+    box-shadow:0 14px 30px rgba(0,0,0,0.4), 0 0 30px rgba(245,166,35,0.2);
+    transition:transform .15s ease, box-shadow .15s ease;
+    animation:cta-breathe 2.6s ease-in-out infinite;
+  }
+  .cta::after{
+    content:"";
+    position:absolute; inset:0;
+    border-radius:inherit;
+    background:var(--gradient-gold);
+    z-index:-1;
+    animation:cta-ping 2.6s cubic-bezier(.4,0,.2,1) infinite;
+    pointer-events:none;
+  }
+  .cta:hover{ box-shadow:0 18px 36px rgba(0,0,0,0.5); }
+  .cta:active{ transform:scale(0.97); }
+  .cta:hover, .cta:focus-visible{ animation-play-state:paused; }
+  .cta:hover::after, .cta:focus-visible::after{ animation-play-state:paused; opacity:0; }
+  @keyframes cta-breathe{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.035); }
+  }
+  @keyframes cta-ping{
+    0%{ transform:scale(1); opacity:.5; }
+    70%{ transform:scale(1.4); opacity:0; }
+    100%{ transform:scale(1.4); opacity:0; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .cta, .cta::after{ animation:none; }
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{
+    padding-block:88px;
+    position:relative;
+  }
+  section h2{
+    font-size:clamp(1.7rem, 2.6vw + 1rem, 2.4rem);
+    letter-spacing:-0.5px;
+    line-height:1.25;
+    max-width:640px;
+  }
+
+  .reveal{
+    opacity:0; transform:translateY(24px);
+    transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+  }
+  .reveal.in-view{ opacity:1; transform:none; }
+
+  /* ---------- PROBLEMA ---------- */
+  .problema-list{
+    margin-top:40px;
+    display:flex; flex-direction:column; gap:28px;
+    max-width:640px;
+  }
+  .problema-item{
+    padding-left:22px;
+    border-left:2px solid var(--silver3);
+    font-size:21px;
+    line-height:1.5;
+    color:var(--white);
+  }
+
+  /* ---------- SOLUCION ---------- */
+  .solucion{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:center;
+  }
+  .solucion p{
+    margin-top:20px;
+    font-size:19px;
+    line-height:1.6;
+    color:var(--silver);
+    max-width:480px;
+  }
+  .waveform{
+    display:flex; align-items:center; justify-content:center; gap:7px;
+    height:180px;
+    border-radius:24px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0));
+    border:1px solid rgba(232,203,170,0.16);
+  }
+  .waveform span{
+    display:block; width:8px; border-radius:6px;
+    background:var(--gradient-silver);
+    animation:wave 1.6s ease-in-out infinite;
+  }
+  .waveform span:nth-child(1){height:28px; animation-delay:-1.2s;}
+  .waveform span:nth-child(2){height:64px; animation-delay:-0.9s;}
+  .waveform span:nth-child(3){height:112px; animation-delay:-0.6s;}
+  .waveform span:nth-child(4){height:70px; animation-delay:-1.4s;}
+  .waveform span:nth-child(5){height:130px; animation-delay:-0.2s;}
+  .waveform span:nth-child(6){height:56px; animation-delay:-0.7s;}
+  .waveform span:nth-child(7){height:96px; animation-delay:-1.0s;}
+  .waveform span:nth-child(8){height:40px; animation-delay:-0.4s;}
+  @keyframes wave{
+    0%,100%{ transform:scaleY(0.45); opacity:.75; }
+    50%{ transform:scaleY(1); opacity:1; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .waveform span{ animation:none; transform:scaleY(0.8); }
+  }
+
+  /* ---------- COMO FUNCIONA ---------- */
+  .steps{
+    margin-top:48px;
+    max-width:640px;
+    position:relative;
+  }
+  .step{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:24px;
+    padding-bottom:48px;
+    position:relative;
+  }
+  .step:last-child{ padding-bottom:0; }
+  .step::before{
+    content:"";
+    position:absolute;
+    left:31px; top:64px; bottom:0;
+    width:2px;
+    background:linear-gradient(180deg, var(--silver3), transparent);
+  }
+  .step:last-child::before{ display:none; }
+  .step-num{
+    width:64px; height:64px; border-radius:18px;
+    background:var(--gradient-silver);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:
+      0 10px 20px rgba(0,0,0,0.4),
+      inset 0 2px 0 rgba(255,255,255,0.5);
+    position:relative; z-index:1;
+  }
+  .step-num i{ font-size:28px; color:var(--navy); }
+  .step h3{
+    margin:6px 0 0;
+    font-family:"Space Grotesk","Arial",sans-serif;
+    font-weight:700; font-size:21px; color:var(--white);
+  }
+  .step p{
+    margin:8px 0 0;
+    font-size:17px; line-height:1.55; color:var(--silver);
+    max-width:420px;
+  }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    text-align:center;
+  }
+  .cta-final h2{ margin:0 auto; }
+  .cta-final .incentive{
+    margin:20px auto 0;
+    max-width:480px;
+    font-size:18px; line-height:1.5; color:var(--silver);
+  }
+  .cta-final .incentive strong{
+    color:var(--white);
+    font-weight:700;
+  }
+  .cta-final .cta{ margin-top:32px; }
+  .cta-final .reassure{
+    margin-top:18px;
+    font-size:14px;
+    color:var(--muted);
+  }
+  .midcta{
+    margin-top:56px;
+    display:flex;
+    justify-content:center;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding-block:56px;
+    border-top:1px solid rgba(232,203,170,0.14);
+  }
+  .footer-row{
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:24px;
+  }
+  .footer-links{
+    display:flex; align-items:center; gap:18px;
+  }
+  .footer-links a{
+    display:flex; align-items:center; justify-content:center;
+    width:42px; height:42px; border-radius:12px;
+    color:var(--silver);
+    border:1px solid rgba(232,203,170,0.2);
+    text-decoration:none;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .footer-links a:hover{ color:var(--white); border-color:var(--silver2); }
+  .footer-links a i{ font-size:20px; }
+  .footer-email{
+    font-size:15px; color:var(--muted); text-decoration:none;
+  }
+  .footer-email:hover{ color:var(--silver); }
+  .footer-copy{
+    margin-top:28px;
+    font-size:13px; color:var(--muted);
+  }
+
+  @media (max-width:760px){
+    .solucion{ grid-template-columns:1fr; }
+    .waveform{ order:-1; }
+  }
+  @media (max-width:520px){
+    section{ padding-block:64px; }
+    .hero{ padding-block:72px 48px; }
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="ghost-b" aria-hidden="true">B</div>
+    <div class="shine" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="brandmark" style="justify-content:center;">
+        <div class="icon"><span>B</span></div>
+      </div>
+      <h1>El mentor que le faltaba a tu negocio, en tu bolsillo.</h1>
+      <p class="sub">Para emprendedores y microempresarios en Colombia que toman decisiones solos, todos los días.</p>
+      <a class="cta" href="#registro" data-cta="hero">Quiero acceso anticipado</a>
+    </div>
+  </section>
+
+  <section class="problema">
+    <div class="wrap">
+      <h2 class="reveal">Nadie te enseñó a llevar un negocio solo.</h2>
+      <div class="problema-list">
+        <div class="problema-item reveal">Decides de afán, sin tiempo para pensarlo bien.</div>
+        <div class="problema-item reveal">No tienes a quién preguntarle si vas por buen camino.</div>
+        <div class="problema-item reveal">Un asesor de negocios cuesta más de lo que puedes pagar hoy.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="solucion-section">
+    <div class="wrap solucion">
+      <div class="reveal">
+        <h2>Habla con tu mentor, cuando lo necesites.</h2>
+        <p>Berraquera es una conversación real por voz con un mentor de IA que entiende tu situación y te orienta al momento. Nada de chatbots de texto genéricos.</p>
+      </div>
+      <div class="waveform reveal" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="como-funciona">
+    <div class="wrap">
+      <h2 class="reveal">Cómo funciona</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num"><i class="ph ph-microphone"></i></div>
+          <div>
+            <h3>Le cuentas tu situación por voz</h3>
+            <p>Hablas como si estuvieras contándole a un asesor de confianza qué está pasando en tu negocio.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num"><i class="ph ph-chats-circle"></i></div>
+          <div>
+            <h3>Te hace las preguntas correctas</h3>
+            <p>Profundiza en tu situación real. No te da respuestas genéricas de manual.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num"><i class="ph ph-list-checks"></i></div>
+          <div>
+            <h3>Te da un plan claro de qué hacer</h3>
+            <p>Sales de la conversación sabiendo exactamente cuál es tu próximo paso.</p>
+          </div>
+        </div>
+      </div>
+      <div class="midcta reveal">
+        <a class="cta" href="#registro" data-cta="como-funciona">Quiero acceso anticipado</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final" id="registro">
+    <div class="wrap">
+      <h2 class="reveal">Sé de los primeros en probarlo.</h2>
+      <p class="incentive reveal">Los primeros <strong>100</strong> en la lista tendrán <strong>acceso gratis por 1 mes</strong> cuando lancemos.</p>
+      <a class="cta reveal" href="#" id="cta-form-link" data-cta="final">Quiero acceso anticipado</a>
+      <p class="reassure reveal">Toma menos de un minuto. Sin tarjeta, sin compromiso.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-row">
+        <div class="brandmark">
+          <div class="icon" style="width:40px;height:40px;border-radius:11px;">
+            <span style="font-size:20px;">B</span>
+          </div>
+          <span class="word" style="font-size:16px;">BERRAQUERA</span>
+        </div>
+        <div class="footer-links">
+          <a href="#" id="link-facebook" aria-label="Facebook" target="_blank" rel="noopener"><i class="ph ph-facebook-logo"></i></a>
+          <a href="#" id="link-instagram" aria-label="Instagram" target="_blank" rel="noopener"><i class="ph ph-instagram-logo"></i></a>
+          <a href="#" id="link-email" aria-label="Correo"><i class="ph ph-envelope-simple"></i></a>
+        </div>
+      </div>
+      <div class="footer-copy">&copy; 2026 Berraquera. Bogotá, Colombia.</div>
+    </div>
+  </footer>
+
+<script>
+  // ============================================================
+  // CONFIGURACIÓN: reemplaza estos 4 valores antes de publicar
+  // ============================================================
+  var CONFIG = {
+    googleFormUrl: "https://forms.gle/h3F8BtPcAt2Hp5fK9",
+    facebookUrl: "https://www.facebook.com/people/Berraquera/61594336384553/",
+    instagramUrl: "https://www.instagram.com/soyberraquera/",
+    contactEmail: "hola.berraquera@gmail.com"
+  };
+
+  try {
+    document.getElementById('cta-form-link').href = CONFIG.googleFormUrl;
+    document.querySelectorAll('a[data-cta="hero"]').forEach(function(a){ a.href = CONFIG.googleFormUrl; });
+    document.getElementById('link-facebook').href = CONFIG.facebookUrl;
+    document.getElementById('link-instagram').href = CONFIG.instagramUrl;
+    document.getElementById('link-email').href = 'mailto:' + CONFIG.contactEmail;
+
+    // Meta Pixel: mide clic en los botones de acceso anticipado
+    document.querySelectorAll('.cta').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (window.fbq) fbq('trackCustom', 'ClicAccesoAnticipado', { seccion: btn.dataset.cta || 'desconocida' });
+      });
+    });
+  } catch (e) {
+    // Un error aquí no debe impedir que el contenido de abajo se revele.
+    console.error('Error configurando enlaces:', e);
+  }
+
+  // Scroll reveal (IntersectionObserver, sin listeners de scroll)
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealEls = document.querySelectorAll('.reveal');
+  if (prefersReduced || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('in-view'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+  // Red de seguridad: si por lo que sea el observer no revela un elemento
+  // (error de JS, navegador raro, salto de ancla), nunca debe quedar
+  // contenido permanentemente invisible en una página de conversión.
+  setTimeout(function(){
+    document.querySelectorAll('.reveal:not(.in-view)').forEach(function(el){
+      el.classList.add('in-view');
+    });
+  }, 2500);
+</script>
+</body>
+</html>
