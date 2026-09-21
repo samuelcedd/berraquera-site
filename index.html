@@ -365,6 +365,12 @@ fbq('track', 'PageView');
     margin-top:28px;
     font-size:13px; color:var(--muted);
   }
+  .footer-privacy{
+    margin-top:14px;
+    font-size:13px; line-height:1.6; color:var(--muted);
+    max-width:640px;
+  }
+  .footer-privacy a{ color:var(--silver2); }
 
   @media (max-width:760px){
     .solucion{ grid-template-columns:1fr; }
@@ -470,27 +476,55 @@ fbq('track', 'PageView');
           <a href="#" id="link-email" aria-label="Correo"><i class="ph ph-envelope-simple"></i></a>
         </div>
       </div>
+      <p class="footer-privacy">
+        <strong>Tratamiento de datos personales (Ley 1581 de 2012):</strong>
+        al dejar tus datos en el formulario de acceso anticipado (nombre y
+        datos de contacto), Berraquera los usa únicamente para escribirte
+        sobre el acceso al producto y novedades relacionadas — no se
+        comparten con terceros ni se usan para otro fin. Puedes pedir que
+        los eliminemos en cualquier momento escribiendo a
+        <a href="#" id="link-email-privacy"></a>.
+      </p>
       <div class="footer-copy">&copy; 2026 Berraquera. Bogotá, Colombia.</div>
     </div>
   </footer>
 
 <script>
   // ============================================================
-  // CONFIGURACIÓN: reemplaza estos 4 valores antes de publicar
+  // CONFIGURACIÓN: reemplaza estos valores antes de publicar
   // ============================================================
   var CONFIG = {
     googleFormUrl: "https://forms.gle/h3F8BtPcAt2Hp5fK9",
     facebookUrl: "https://www.facebook.com/people/Berraquera/61594336384553/",
     instagramUrl: "https://www.instagram.com/soyberraquera/",
-    contactEmail: "hola.berraquera@gmail.com"
+    contactEmail: "hola.berraquera@gmail.com",
+
+    // --- WhatsApp Business (plan original) ---
+    // Cuando tengamos el número, ponlo aquí en formato internacional sin
+    // "+" ni espacios (ej. "573001234567") y cambia useWhatsapp a true.
+    // Mientras tanto el CTA sigue usando googleFormUrl sin ningún cambio.
+    useWhatsapp: false,
+    whatsappNumber: "",
+    whatsappMessage: "Hola, quiero ser de los primeros en probar Berraquera"
   };
 
+  // CTA activo: WhatsApp si está configurado y encendido, si no el Google Form.
+  var ctaUrl = CONFIG.googleFormUrl;
+  if (CONFIG.useWhatsapp && CONFIG.whatsappNumber) {
+    ctaUrl = "https://wa.me/" + CONFIG.whatsappNumber + "?text=" + encodeURIComponent(CONFIG.whatsappMessage);
+  }
+
   try {
-    document.getElementById('cta-form-link').href = CONFIG.googleFormUrl;
-    document.querySelectorAll('a[data-cta="hero"]').forEach(function(a){ a.href = CONFIG.googleFormUrl; });
+    document.getElementById('cta-form-link').href = ctaUrl;
+    document.querySelectorAll('a[data-cta="hero"]').forEach(function(a){ a.href = ctaUrl; });
     document.getElementById('link-facebook').href = CONFIG.facebookUrl;
     document.getElementById('link-instagram').href = CONFIG.instagramUrl;
     document.getElementById('link-email').href = 'mailto:' + CONFIG.contactEmail;
+    var privacyEmailLink = document.getElementById('link-email-privacy');
+    if (privacyEmailLink) {
+      privacyEmailLink.href = 'mailto:' + CONFIG.contactEmail;
+      privacyEmailLink.textContent = CONFIG.contactEmail;
+    }
 
     // Meta Pixel: mide clic en los botones de acceso anticipado
     document.querySelectorAll('.cta').forEach(function(btn){
