@@ -478,11 +478,12 @@ fbq('track', 'PageView');
       </div>
       <p class="footer-privacy">
         <strong>Tratamiento de datos personales (Ley 1581 de 2012):</strong>
-        al dejar tus datos en el formulario de acceso anticipado (nombre y
-        datos de contacto), Berraquera los usa únicamente para escribirte
-        sobre el acceso al producto y novedades relacionadas — no se
-        comparten con terceros ni se usan para otro fin. Puedes pedir que
-        los eliminemos en cualquier momento escribiendo a
+        al escribirnos por WhatsApp para el acceso anticipado, Berraquera usa
+        tu número de contacto y los datos que nos compartas en la
+        conversación (como tu nombre) únicamente para contactarte sobre el
+        acceso al producto y novedades relacionadas — no se comparten con
+        terceros ni se usan para otro fin. Puedes pedir que los eliminemos en
+        cualquier momento escribiendo a
         <a href="#" id="link-email-privacy"></a>.
       </p>
       <div class="footer-copy">&copy; 2026 Berraquera. Bogotá, Colombia.</div>
@@ -494,25 +495,16 @@ fbq('track', 'PageView');
   // CONFIGURACIÓN: reemplaza estos valores antes de publicar
   // ============================================================
   var CONFIG = {
-    googleFormUrl: "https://forms.gle/h3F8BtPcAt2Hp5fK9",
     facebookUrl: "https://www.facebook.com/people/Berraquera/61594336384553/",
     instagramUrl: "https://www.instagram.com/soyberraquera/",
     contactEmail: "hola.berraquera@gmail.com",
 
     // --- WhatsApp Business (plan original) ---
-    // Cuando tengamos el número, ponlo aquí en formato internacional sin
-    // "+" ni espacios (ej. "573001234567") y cambia useWhatsapp a true.
-    // Mientras tanto el CTA sigue usando googleFormUrl sin ningún cambio.
-    useWhatsapp: false,
-    whatsappNumber: "",
+    whatsappNumber: "573228901652",
     whatsappMessage: "Hola, quiero ser de los primeros en probar Berraquera"
   };
 
-  // CTA activo: WhatsApp si está configurado y encendido, si no el Google Form.
-  var ctaUrl = CONFIG.googleFormUrl;
-  if (CONFIG.useWhatsapp && CONFIG.whatsappNumber) {
-    ctaUrl = "https://wa.me/" + CONFIG.whatsappNumber + "?text=" + encodeURIComponent(CONFIG.whatsappMessage);
-  }
+  var ctaUrl = "https://wa.me/" + CONFIG.whatsappNumber + "?text=" + encodeURIComponent(CONFIG.whatsappMessage);
 
   try {
     document.getElementById('cta-form-link').href = ctaUrl;
